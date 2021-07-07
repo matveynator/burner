@@ -6,7 +6,7 @@
  
 Стабильная версия создана в 2016 году :) [v1.33 для UNO - скачать](https://github.com/matveynator/burner/archive/refs/tags/uno.zip)
 
-<img src="https://raw.githubusercontent.com/matveynator/burner/main/burner-02.jpeg" width=600>
+<img src="https://raw.githubusercontent.com/matveynator/burner/main/burner-01.jpeg" width=600>
 
 Идея и сборка горелок: Вадим Портнов, программирование: Матвей Гладких, печатные платы и электроника: Дядя Коля.
 
