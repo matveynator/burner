@@ -1,5 +1,5 @@
 
-## Arduino uno/mega oil/diesel/propane heater stove with GSM/SMS designed by Vadim Portnov and friends.
+## Arduino uno/mega2560 (oil/diesel etc) heater stove controller with GSM/SMS designed by Vadim Portnov and friends.
 Исходный код горелки на отработке [Вадима Портнова](http://portnov.kmv.ru), работает на Arduino Uno/Mega, управляется по SMS (через GSM).  
 
 ### Стабильная версия: 1.33 для UNO - [скачать](https://github.com/matveynator/burner/archive/refs/tags/uno.zip)
