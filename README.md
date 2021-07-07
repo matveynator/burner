@@ -1,6 +1,8 @@
 
 ## Arduino uno/mega oil burner stove designed by [Vadim Portnov](http://portnov.kmv.ru) and friends.
-## Исходный код горелки на отработке [Вадима Портнова](http://portnov.kmv.ru). Работает на Arduino Uno/Mega. Управляется по GSM (SMS).  
+### Исходный код горелки на отработке [Вадима Портнова](http://portnov.kmv.ru). Работает на Arduino Uno/Mega, управляется по SMS (через GSM).  
+
+# Версия: 1.33
 
 <img src="https://raw.githubusercontent.com/matveynator/burner/main/burner-02.jpeg" width=600>
 
