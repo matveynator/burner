@@ -1,2 +1,19 @@
-# burner
-Arduino uno/mega oil burner stove designed by Vadim Portnov and friends.
+
+## Arduino uno/mega oil burner stove designed by Vadim Portnov and friends.
+## Исходный код контроллера горелки на отработке придуманной Вадимом Портновым. 
+
+
+Дизайн и идея: Вадим Портнов 
+
+Программирование: Матвей Гладких (Me)
+
+Печатные платы: Дядя Коля (Uncle Nicola)
+
+Пользуйтесь наздоровье )
+Присылайте свои схемы и наработки на matveynator@gmail.com - добавлю в репозиторий чтобы люди могли печатные полаты травить и делтать себе качественное отопление.
+
+Вот так работает эта версия:
+
+https://youtu.be/IhUag1pTcPc
+
+сайт готовой горелки ( http://portnov.kmv.ru ) - тут можно купить готовую горелку уже с программой Дяди Коли )
