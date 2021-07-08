@@ -91,7 +91,6 @@ const int HeaterSwitch = 5;  // реле тена
 const int FanSwitch = 6;  // реле включения продувки вентиллятором
 const int OneWireWaterTempSensorAddress = 7; //датчик температуры воды
 const int PowerInput = 8; //5v входящие от сети (если нет то бить тревогу)
-const int OneWireFuelTempSensorAddress = A2; //датчик температуры топлива
 const int EncoderBack = 9; //поворотная кнопка против часовой стрелкe
 const int EncoderForward = 10; //поворотная кнопка по часовой стрелке
 const int IgnitionSwitch = 11;   // частотный выход для катушки зажигания ( analogWrite(IgnitionSwitch, 160) ШИМ широко-импульсная модуляция)
@@ -101,6 +100,7 @@ const int GSMRX = 13; //GSM пин на который мы отправляем
 
 //аналоговые выходы
 const int OpticalSensor = A0; //фотодатчик (смотрим горит ли пламя)
+const int OneWireFuelTempSensorAddress = A2; //датчик температуры топлива (масла/дизеля)
 const int FuelLevelSensor = A3; // датчик уровня масла
 
 
