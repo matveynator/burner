@@ -1,21 +1,23 @@
 
-## Arduino uno/mega (oil/diesel etc...) heater stove controller with GSM/SMS designed by Vadim Portnov and friends.
+# Arduino Uno/Mega Heater Stove Controller for Oil/Diesel with GSM/SMS
+### Designed by Vadim Portnov and Friends
 
-Полностью автоматическая горелка на отработке c SMS-оповещением произовдства [Вадима Портнова и Николая Лобанова](http://portnov.kmv.ru). Работает просто и надежно, как айфон :) только на Arduino Uno. (Можно переделать под Mega (еще лучше будет тк будет больше памяти под команды SMS или что то еще.))
-Отработанное масло, обычное масло, нефть, мазут, печное / пиролизное топливо, дизель и все то, что может гореть. 
- 
-Стабильная версия создана в 2016 году :) [v1.33 для UNO - скачать](https://github.com/matveynator/burner/archive/refs/tags/uno.zip)
+Fully automated burner for used oil with SMS notifications developed by [Vadim Portnov and Nikolay Lobanov](http://portnov.kmv.ru). Works simply and reliably, like an iPhone, but on Arduino Uno. (Can be adapted for Mega, which is even better due to more memory for SMS commands or other features.)
 
-<img src="https://raw.githubusercontent.com/matveynator/burner/main/burner-01.jpeg" width=600>
+Accepts used oil, regular oil, fuel oil, mazut, furnace/pyrolysis fuel, diesel, and anything that can burn.
 
-Идея и сборка горелок: Вадим Портнов, программирование: Матвей Гладких, печатные платы и электроника: Дядя Коля (Николай Лобанов).
+Stable version created in 2016 :) [v1.33 for UNO - download](https://github.com/matveynator/burner/archive/refs/tags/uno.zip)
 
-Пользуйтесь наздоровье. В горелке и в программе реализованно много интересных идей и защит от ошибок, горелка вас не подведет.
-Присылайте свои схемы и наработки на matveynator@gmail.com - добавлю в репозиторий чтобы люди могли печатные платы травить и делтать себе качественное отопление.
+![Burner](https://raw.githubusercontent.com/matveynator/burner/main/burner-01.jpeg)
 
-Вот так работает эта версия (видео с ютуба):
+Burner concept and assembly by Vadim Portnov, programming by Matvey Gladkikh, PCB and electronics by Uncle Kolya (Nikolay Lobanov).
 
-<a href="https://www.youtube.com/watch?v=IhUag1pTcPc"><img src="https://raw.githubusercontent.com/matveynator/burner/main/youtube.png" width="600" alt="Вот так работает эта версия (видео с ютуба):"></a>
+Feel free to use it. The burner and program implement many interesting ideas and error protections, ensuring reliable operation. Send your schematics and developments to matveynator@gmail.com - I'll add them to the repository so people can etch PCBs and create quality heating for themselves.
 
-Сайт готовой горелки на отработке ( http://portnov.kmv.ru ) - тут можно купить готовую горелку уже с улучшенной программой от Дяди Коли (Николая Лобанова).
-Не забывайте пожалуйста благодарить Вадима и дядю Колю за то что разрешил опубликовать эту старую версию на благо всех людей кто хочет сделать качественное отопление самостоятельно.
+Watch how this version works on [YouTube](https://www.youtube.com/watch?v=IhUag1pTcPc):
+
+[![Burner Demo](https://raw.githubusercontent.com/matveynator/burner/main/youtube.png)](https://www.youtube.com/watch?v=IhUag1pTcPc)
+
+Visit the ready-made used oil burner website at [portnov.kmv.ru](http://portnov.kmv.ru) - where you can buy a ready-made burner with an improved program by Uncle Kolya (Nikolay Lobanov).
+
+Don't forget to thank Vadim and Uncle Kolya for allowing the publication of this old version for the benefit of everyone who wants to create quality heating independently.
