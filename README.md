@@ -1,5 +1,7 @@
-# Arduino Uno/Mega Heater Stove Controller for Oil/Diesel with GSM/SMS
+# Arduino Uno/Mega Stove Controller: Transforming Used Oil into Warmth
 ### Designed by Vadim Portnov and Friends
+
+Ignite sustainability with the Arduino Uno/Mega Stove Controller, crafted by Vadim Portnov and friends. Convert used oil and diesel into comforting warmth, seamlessly controlled with GSM/SMS. 🔥
 
 Behold the marvel of warmth, a fully automated burner for used oil with SMS notifications, brought to you by the ingenious minds of [Vadim Portnov and Nikolay Lobanov](http://portnov.kmv.ru). It operates as smoothly and reliably as an iPhone but dances to the rhythm of Arduino Uno. For those craving even more, fear not, for it can be tailored for Mega, offering a grander stage with ample memory for SMS commands and more.
 
