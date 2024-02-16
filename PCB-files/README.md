@@ -1,22 +1,35 @@
-Приложил старую схему и файл платыPCB от 17года. Там можно было ставить UNO или NANO
-с узким дисплеем и аккумулятором 8в (от Ingenico терминала).
-Всё работало.
-Сегодня с учётом  всех накопленных компетенций я бы на этой плате увеличил площадь теплоотвода
-симисторов, уменьшил бы уровень сигнала с ардуины на SIM800l до 2,7В ,убрал бы с платы ключ зажигания
-(надо заменить на реле для зажигания 220в) и отказался бы от аккумулятора.
+## Project Description
 
-Сейчас у нас есть основная разработка на одной плате 108x148мм  с дисплеем 128х64 , которая может работать с
-Ардуино Мега и ESP32  30pin DEVKIT. Также эту же  плату можно использовать совсем без дисплея и энкодера ,
-с парой самых дешёвых котроллеров LGT8F328P + ESP01. Управление в этом случае полностью с тлф
-через приложение RemoteXY.
+### Schematic and PCB Layout
 
-И есть ещё новая разработка, когда эта же плата используется как исполнительная  на дешёвом  контроллере LGT8F328P. ( это аналог NANO)
-На эту плату ставится усилитель на микросхеме max3232 сигнала UART до протокола RS232 , что позволяет
-выносить основную плату управления с дисплеем на ESP32 с SMS и WiFi от котла до 15метров обычным сетевым пачкортом . Это полезно, когда у котла плохой уровень сигнала wIFi или GSM ( как у меня, когда котел в
-металлическом контейнере).
+I have provided schematics and PCB layouts in a printable format for firmware version 1.33. These can be presented as a comprehensive project.
 
-Всем удачи!
+![Burner 1](burner-1.png)[^1]
+![Burner 2](burner-2.png)[^2]
+![Burner 3](burner-3.png)[^3]
+![Burner 4](burner-4.png)[^4]
 
-С уважением,
-Николай Лобанов
-Тел:+7(921)9693559
+### Compatible Boards
+
+You can use either an Arduino Nano (or the new Chinese equivalent LGT328p) or an ESP32 on the board, as shown in the provided sketch. If you choose the latter, you can replace SMS notifications with Wi-Fi and continue the project's development.
+
+### Display Options
+
+The display can be either an old two-line display or any other with an I2C interface, such as a 0.96 OLED.
+
+### Support and Questions
+
+For any questions regarding the schematic or PCB layout, feel free to raise them as needed. We can address and resolve them as they come up.
+
+### Best Wishes
+
+Wishing you creative success in your endeavors!
+
+Best regards,
+Nikolay Lobanov
+
+[^1]: [Burner 1 PDF](burner-1.pdf)
+[^2]: [Burner 2 PDF](burner-2.pdf)
+[^3]: [Burner 3 PDF](burner-3.pdf)
+[^4]: [Burner 4 PDF](burner-4.pdf)
+
