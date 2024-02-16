@@ -4,10 +4,10 @@
 
 I have provided schematics and PCB layouts in a printable format for firmware version 1.33. These can be presented as a comprehensive project.
 
-[![Burner 1](burner-1.png){width=20%}](burner-1.pdf)
-[![Burner 2](burner-2.png){width=20%}](burner-2.pdf)
-[![Burner 3](burner-3.png){width=20%}](burner-3.pdf)
-[![Burner 4](burner-4.png){width=20%}](burner-4.pdf)
+<a href="burner-1.pdf"><img src="burner-1.png" alt="Burner 1" width="20%"></a>
+<a href="burner-2.pdf"><img src="burner-2.png" alt="Burner 2" width="20%"></a>
+<a href="burner-3.pdf"><img src="burner-3.png" alt="Burner 3" width="20%"></a>
+<a href="burner-4.pdf"><img src="burner-4.png" alt="Burner 4" width="20%"></a>
 
 ### Compatible Boards
 
