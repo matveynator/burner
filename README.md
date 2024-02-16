@@ -15,6 +15,11 @@ Conceptualized and assembled by the maestro Vadim Portnov, choreographed by Matv
 
 Embark on a journey of creation. Dive into the depths of [PCB files](https://github.com/matveynator/burner/tree/main/PCB-files) to download the project for printing your own circuit boards.
 
+<a href="PCB-files/burner-1.pdf"><img src="PCB-files/burner-1.png" alt="Burner 1" width="20%"></a>
+<a href="PCB-files/burner-2.pdf"><img src="PCB-files/burner-2.png" alt="Burner 2" width="20%"></a>
+<a href="PCB-files/burner-3.pdf"><img src="PCB-files/burner-3.png" alt="Burner 3" width="20%"></a>
+<a href="PCB-files/burner-4.pdf"><img src="PCB-files/burner-4.png" alt="Burner 4" width="20%"></a>
+
 For those dwelling in the enchanted forests, far from city lights, with access to the mystical fuels of the woods, here lies an opportunity to craft your own hearth. Let the burner dance to warm the cozy haven you call home.
 
 Witness the spectacle on [YouTube](https://www.youtube.com/watch?v=IhUag1pTcPc):
