@@ -4,10 +4,10 @@
 
 I have provided schematics and PCB layouts in a printable format for firmware version 1.33. These can be presented as a comprehensive project.
 
-![Burner 1](burner-1.png)[^1]
-![Burner 2](burner-2.png)[^2]
-![Burner 3](burner-3.png)[^3]
-![Burner 4](burner-4.png)[^4]
+[![Burner 1](burner-1.png){width=20%}](burner-1.pdf)
+[![Burner 2](burner-2.png){width=20%}](burner-2.pdf)
+[![Burner 3](burner-3.png){width=20%}](burner-3.pdf)
+[![Burner 4](burner-4.png){width=20%}](burner-4.pdf)
 
 ### Compatible Boards
 
@@ -27,9 +27,4 @@ Wishing you creative success in your endeavors!
 
 Best regards,
 Nikolay Lobanov
-
-[^1]: [Burner 1 PDF](burner-1.pdf)
-[^2]: [Burner 2 PDF](burner-2.pdf)
-[^3]: [Burner 3 PDF](burner-3.pdf)
-[^4]: [Burner 4 PDF](burner-4.pdf)
 
