@@ -1,61 +1,61 @@
 /*
-   УНИВЕРСАЛЬНАЯ ГОРЕЛКА-БОЙЛЕР
-   v1.33: Управление по смс .
-   - исправление 1.29
+   UNIVERSAL BURNER-STOVE-BOILER
+   v1.34: english comments.
+   - Fix 1.29
 */
 
+////////////////////////// beginning of configurable settings //////////////////////
+char SketchVersion[16] = "PORTNOV v1.34";
+char CopyrightData[16] = "PORTNOV STOVE"; // copyright on the screen
+char SMSDefaultContact[18] = "+79280061067"; // default recipient for SMS
+char SMSContact[18]; // recipient for critical error notifications
 
-////////////////////////// начало настроек которые можно менять //////////////////////
-char SketchVersion[16] = "PORTNOV v1.33";
-char CopyrightData[16] = "+79280061067"; //копирайт на экране
-char SMSDefaultContact[18] = "+79280061067"; //кому отправлять смс по умолчанию
-char SMSContact[18]; //кому отправляются уведомления о критических ошибках
+// Thermostat
+boolean ThermostatActive = 0; // Is thermostat active? 0 = no, 1 = yes;
+const int ThermostatButton = A1; // Button to activate the burner by thermostat
 
-//термостат
-boolean ThermostatActive = 0; //имеется ли термостат? 0 = нет, 1 = да;
-const int ThermostatButton = A1; //кнопка включения горелки по термостату
-
-//маслонасос
-unsigned long PumpTimeout = 200000; //аварийный таймаут маслонасоса (200 секунд).
-//все что относится к воде
-int DesiredWaterTemp = 60; //желаемая (меняемая из меню) температура воды в батареях
-const int MinimumWaterTemp = 15; //минимальная температура воды в батарее
-const int MaximumWaterTemp = 80; //максимальная температура воды в батарее
-const int CriticalWaterTemp = 90; //аварийная температура воды
-//все что относится к гистерезису воды
-int DesiredWaterGisteresisTemp = 5; //желаемый (меняемый из меню) гистерезис воды
-const int MinimumWaterGisteresisTemp = 0; //минимальный гистерезис воды
-const int MaximumWaterGisteresisTemp = 10; //максимальный гистерезис воды
-//все что относится к маслу
-int DesiredFuelTemp = 86; //желаемая (меняемая из меню) температура распыления масла
-const int MinimumFuelTemp = 10; //минимальная температура распыления масла
-const int MaximumFuelTemp = 105; //максимальная температура распыления масла
-const int CriticalFuelTemp = 115; //аварийная температура распыления масла
-//все что относится к гистерезису масла
-const int DesiredFuelGisteresisTemp = 2; //неизменный гистерезис распыления масла
-//все что относится ко времени выполнения розжига
-unsigned long FanStartUpTime = 10000; //10 сек время продувки перед запуском
-unsigned long FanShutDownTime = 10000; //10 сек время работы вентилятора по завершению горения
-unsigned long FanPreIgnitionPauseTime = 10000; //10 сек время паузы после продувки перед запуском
-unsigned long IgnitionTime = 5000; //время работы искры на розжиг (больше 10 секунд опасно!)
-unsigned long IgnitionPauseTime = 10000; //5 сек пауза после работы искры
-unsigned long PreIgnitionFanDelay = 0; //время задержки вентилятора после работы искры
-const int IgnitionAttempts = 5; // количество попыток розжига горелки
-const int SensorErrorCount = 10; //количество игнорируемых ошибок датчиков температуры 5x10сек=50sec максимально простой с ребутом вочдогом 8сек
-const int IgnitionImpulseFrequency = 155; //частота подачи импульса на искру (больше 180 опасно!)
-int AmbientLumen = 0; //минимальное значение светимости пламени в единицах датчика
-const int LumenDiff = 20; //разница между освещенностью помещения и горящим пламенем
-//меню
-unsigned long SetupWaitTime = 5000; //время ожидания нажатия кнопки сетапа (изменения настроек)
-unsigned long SetupPushWaitTime = 2000; //время нажатия кнопки для входа в сетап в рабочем режиме (изменения настроек)
-unsigned long TempSensErrorWaitTime = 30000; //30сек ждать пока не ребутнемся при ошибке датчика температуры
+// Oil pump
+unsigned long PumpTimeout = 200000; // Emergency timeout for the oil pump (200 seconds).
+// All related to water
+int DesiredWaterTemp = 60; // Desired (changeable from the menu) water temperature in radiators
+const int MinimumWaterTemp = 15; // Minimum water temperature in the radiator
+const int MaximumWaterTemp = 80; // Maximum water temperature in the radiator
+const int CriticalWaterTemp = 90; // Emergency water temperature
+// All related to water hysteresis
+int DesiredWaterGisteresisTemp = 5; // Desired (changeable from the menu) water hysteresis
+const int MinimumWaterGisteresisTemp = 0; // Minimum water hysteresis
+const int MaximumWaterGisteresisTemp = 10; // Maximum water hysteresis
+// All related to oil
+int DesiredFuelTemp = 86; // Desired (changeable from the menu) oil atomization temperature
+const int MinimumFuelTemp = 10; // Minimum oil atomization temperature
+const int MaximumFuelTemp = 105; // Maximum oil atomization temperature
+const int CriticalFuelTemp = 115; // Emergency oil atomization temperature
+// All related to oil hysteresis
+const int DesiredFuelGisteresisTemp = 2; // Unchanged oil atomization hysteresis
+// All related to ignition time
+unsigned long FanStartUpTime = 10000; // 10 sec purge time before ignition
+unsigned long FanShutDownTime = 10000; // 10 sec fan operation time after burning
+unsigned long FanPreIgnitionPauseTime = 10000; // 10 sec pause after purge before ignition
+unsigned long IgnitionTime = 5000; // Ignition spark duration (more than 10 seconds is dangerous!)
+unsigned long IgnitionPauseTime = 10000; // 5 sec pause after spark operation
+unsigned long PreIgnitionFanDelay = 0; // Fan delay time after spark operation
+const int IgnitionAttempts = 5; // Number of burner ignition attempts
+const int SensorErrorCount = 10; // Number of ignored temperature sensor errors 5x10sec=50sec maximum downtime with watchdog reboot 8sec
+const int IgnitionImpulseFrequency = 155; // Frequency of spark pulse delivery (more than 180 is dangerous!)
+int AmbientLumen = 0; // Minimum flame brightness value in light sensor units
+const int LumenDiff = 20; // Difference between room light and burning flame
+// Menu
+unsigned long SetupWaitTime = 5000; // Time to wait for the setup button press (settings changes)
+unsigned long SetupPushWaitTime = 2000; // Time to press the button to enter setup in working mode (settings changes)
+unsigned long TempSensErrorWaitTime = 30000; // 30 sec wait for a reboot in case of temperature sensor error
 
 
-//проверка тена
-int HeaterWatchdogCounter = 0; //обнуляем вочдог тена
+// Checking the heating element
+int HeaterWatchdogCounter = 0; // Reset the heater watchdog
 int HeaterWatchdogTemp;
-const int HeaterWatchdogMax = 100; //количество циклов запуска тена (приблизительно 5мин 1цикл=3сек) после которого если нагрева не произошло считать что тен сломался
-////////////////////////// конец настроек которые можно менять //////////////////////
+const int HeaterWatchdogMax = 100; // Number of cycles of heating element activation (approximately 5 minutes, 1 cycle = 3 sec) after which, if no heating occurs, consider that the heating element is broken
+////////////////////////// end of configurable settings //////////////////////
+
 #include <avr/wdt.h>
 #include <Bounce2.h>
 #include <Rotary.h>
@@ -66,45 +66,42 @@ const int HeaterWatchdogMax = 100; //количество циклов запу�
 #include <LiquidCrystal_I2C.h>
 #include <NeoSWSerial.h>
 
-
-//стираем коды ошибок в начальное положение false (0) - volatile для ответственных переменных;
-volatile boolean EmergencyExitCode = 0; //общая критическая ошибка - проверяется везде!
-boolean InteractiveMode = 0; // переменная при вызове которой переходим в режим ввода данных
-boolean PumpIsRunning = 0; //насос по умолчанию выключен
-boolean HeaterIsRunning = 0; //нагреватель по умолчанию выключен
-boolean FireShouldBeRunning = 0; //огонь по умолчанию не горит
-boolean IgnitionShouldBeRunning = 0; //зажигание по умолчание в позиции выключено
-boolean PowerLost = 0; //пропало ли 220в ?
+// Reset error codes to initial state (false - 0) - volatile for critical variables;
+volatile boolean EmergencyExitCode = 0; // Common critical error - checked everywhere!
+boolean InteractiveMode = 0; // Variable to switch to data input mode when called
+boolean PumpIsRunning = 0; // Pump is initially turned off
+boolean HeaterIsRunning = 0; // Heater is initially turned off
+boolean FireShouldBeRunning = 0; // Fire is initially not burning
+boolean IgnitionShouldBeRunning = 0; // Ignition is initially in the off position
+boolean PowerLost = 0; // Has 220V power been lost?
 boolean ConfirmStartBySMS = 0;
 
-//собираем данные с датчиков в эти переменные:
-int WaterTemperatureSensorValue; //сюда пишем GetTemperature(OneWireWaterTempSensorAddress);
-int FuelTemperatureSensorValue; //сюда пишем значение GetTemperature(OneWireFuelTempSensorAddress);
-int FireSensorValue; // сюда пишем значние ReadOpticalSensor(OpticalSensor);
-int FuelLevelValue; // сюда пишем значние digitalRead(FuelLevelSensor);
+// Collect data from sensors into these variables:
+int WaterTemperatureSensorValue; // Write GetTemperature(OneWireWaterTempSensorAddress) value here
+int FuelTemperatureSensorValue; // Write GetTemperature(OneWireFuelTempSensorAddress) value here
+int FireSensorValue; // Write ReadOpticalSensor(OpticalSensor) value here
+int FuelLevelValue; // Write digitalRead(FuelLevelSensor) value here
 
-//цифровые выходы (прерывания только на 2 и 3 пине)
-const int GSMTX = 2; //GSM пин с которого мы получаем входящие сообщения на ардуину от GSM асинхронно по прерываниям (!!!прерывание - ОБЯЗАТЕЛЬНО!!!).
-const int EncoderButton = 3;  // кнопка энкодера
-const int FuelPumpSwitch = 4;   // реле подкачки масла (маслонасоса)
-const int HeaterSwitch = 5;  // реле тена
-const int FanSwitch = 6;  // реле включения продувки вентиллятором
-const int OneWireWaterTempSensorAddress = 7; //датчик температуры воды
-const int PowerInput = 8; //5v входящие от сети (если нет то бить тревогу)
-const int EncoderBack = 9; //поворотная кнопка против часовой стрелкe
-const int EncoderForward = 10; //поворотная кнопка по часовой стрелке
-const int IgnitionSwitch = 11;   // частотный выход для катушки зажигания ( analogWrite(IgnitionSwitch, 160) ШИМ широко-импульсная модуляция)
-const int AirValve = 12; // клапан воздуха компрессора
-const int GSMRX = 13; //GSM пин на который мы отправляем исходящие сообщения с ардуины (без прерывания)
+// Digital outputs (interrupts only on pins 2 and 3)
+const int GSMTX = 2; // GSM pin to receive incoming messages asynchronously on Arduino via interrupts (!!!interrupt - MANDATORY!!!).
+const int EncoderButton = 3; // Encoder button
+const int FuelPumpSwitch = 4; // Oil pump priming relay
+const int HeaterSwitch = 5; // Heater relay
+const int FanSwitch = 6; // Fan activation relay
+const int OneWireWaterTempSensorAddress = 7; // Water temperature sensor
+const int PowerInput = 8; // 5V input from the 220v network (trigger alarm if 220v is absent)
+const int EncoderBack = 9; // Rotary button counterclockwise
+const int EncoderForward = 10; // Rotary button clockwise
+const int IgnitionSwitch = 11; // Frequency output for ignition coil (analogWrite(IgnitionSwitch, 160) PWM - Pulse Width Modulation)
+const int AirValve = 12; // Compressor air valve
+const int GSMRX = 13; // GSM pin to send outgoing messages from Arduino (without interrupt)
 
+// Analog outputs
+const int OpticalSensor = A0; // Photodetector (check if flame is present)
+const int OneWireFuelTempSensorAddress = A2; // Fuel (oil/diesel) temperature sensor
+const int FuelLevelSensor = A3; // Oil level sensor
 
-//аналоговые выходы
-const int OpticalSensor = A0; //фотодатчик (смотрим горит ли пламя)
-const int OneWireFuelTempSensorAddress = A2; //датчик температуры топлива (масла/дизеля)
-const int FuelLevelSensor = A3; // датчик уровня масла
-
-
-//ПЗУ
+// EEPROM
 const int WaterEepromAddress = 1;
 const int WaterGisteresisEepromAddress = 2;
 const int FuelEepromAddress = 3;
@@ -115,24 +112,24 @@ const int MessageNotifyEepromAddress = 7;
 const int SMSEepromAddress = 100;
 const int MessageEepromAddress = 200;
 
-//по умолчанию горелка выключена(0) - включить(1).
+// Burner is initially off (0) - turn on (1).
 boolean OperationMode = 0;
 
-//по умолчанию sms отключены(0) - включить(1)
+// SMS is initially disabled (0) - enable (1)
 boolean GSMOperationMode = 0;
 
-//переменные относящиеся к учету времени
-unsigned long PumpStartTime; //время старта маслонасоса
+// Time-related variables
+unsigned long PumpStartTime; // Oil pump start time
 
-//текстовые переменные
-char* SystemMessage; //текстовая запись при аварийном выключении
+// Text variables
+char* SystemMessage; // Text record for emergency shutdown
 
-//Пароль для управления по смс
+// SMS control password
 int Password;
 
-//настройка экрана 16x2 (новый адрес)
-//LiquidCrystal_I2C lcd(0x03F, 16, 2);
-//настройка экрана 16x2 (старый адрес)
+// 16x2 screen setup (new address)
+// LiquidCrystal_I2C lcd(0x03F, 16, 2);
+// 16x2 screen setup (old address)
 LiquidCrystal_I2C lcd(16, 2);
 
 int WaterTempSensorValue;
@@ -143,10 +140,10 @@ int AirTempSensorValue;
 int AirTempSensorErrorCount = 0;
 int Temperature;
 
-//инициируем объект дебаунсера
+// Initialize debouncer object
 Bounce DebouncedEncoder = Bounce();
 
-//Секция - все для СМС - начало
+// Section - all for SMS - start
 
 String inputString = "";   // a String to hold incoming data
 boolean stringComplete = false;  // whether the string is complete
@@ -165,6 +162,7 @@ static void HandleSMSRXData( char c )
 
 String grepValue(String data, char separator, int index)
 {
+  // Function to extract a value from a string based on a separator and index
   int found = 0;
   int strIndex[] = {0, -1};
   int maxIndex = data.length() - 1;
@@ -180,9 +178,8 @@ String grepValue(String data, char separator, int index)
   return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
 
-
-
 void AtRequest(String AtCommand = "", String AtResponse = "", int Retries = 5) {
+  // Function to send AT commands to the SIM800 module and wait for a specific response
   if (AtCommand.length() > 0 and AtResponse.length() == 0) {
     wdt_reset();
     serialSIM800.println(AtCommand);
@@ -200,7 +197,7 @@ void AtRequest(String AtCommand = "", String AtResponse = "", int Retries = 5) {
           if (inputString.length() != 0) {
             Serial.println(inputString);
             if (inputString.endsWith(AtResponse)) {
-              //OK: AT command succeded.
+              // OK: AT command succeeded.
               Finished = true;
             }
             inputString = "";
@@ -222,54 +219,53 @@ void AtRequest(String AtCommand = "", String AtResponse = "", int Retries = 5) {
 }
 
 void GSMInit() {
+  // Initialize GSM module with specific AT commands
   PrintMessage("GSM init...");
-  AtRequest("AT", "OK"); //включен ли модем?
-  AtRequest("ATE0", "OK"); //отключаем эхо
-  AtRequest("AT+CLIP=1", "OK"); //включаем нотификацию на экран
-  AtRequest("AT+CMGF=1", "OK"); //переходим в текстовый режим из бинарного
-  AtRequest("AT+CNMI=2,2,0,0,0", "OK"); //отключаем хранение смс в памяти - показывать на экране и все
+  AtRequest("AT", "OK"); // Is the modem on?
+  AtRequest("ATE0", "OK"); // Turn off echo
+  AtRequest("AT+CLIP=1", "OK"); // Enable notification on screen
+  AtRequest("AT+CMGF=1", "OK"); // Switch to text mode from binary
+  AtRequest("AT+CNMI=2,2,0,0,0", "OK"); // Disable storing SMS in memory - show on screen and discard
 }
 
 void SendSMS(char Phone[16], char Message[16]) {
+  // Send SMS with specified phone number and message
   if (GSMOperationMode == 1) {
     GSMInit();
     PrintDualMessage(Message, "SMS SENT");
     AtRequest("AT+CMGS=\"" + String(Phone) + "\"\n" + String(Message) + "\x1A");
-    //unsigned long CurrentTime = millis();
-    //while ( millis() < CurrentTime + 1000) {
-    //  wdt_reset();
-    //}
   } else {
     PrintMessage(Message);
   }
 }
 
 void GetTempPhone() {
-  //if (Message.substring(1, 5) == "CLIP" or Message.substring(1, 4) == "CMT" or Message.substring(0, 9) == "RING+CLIP") {
-  //if (Message.substring(0, 9) == "RING+CLIP") {
+  // Process temporary phone number received in SMS
   if (inputString.substring(1, 4) == "CMT") {
     String TempPhone = grepValue(inputString, '"', 1);
     TempPhone.reserve(24);
     if (TempPhone == String(SMSContact) ) {
       if (inputString.endsWith("on") or inputString.endsWith("On") or inputString.endsWith("ON"))  {
+        // Switch ON
         EEPROM.update(OperationEepromAddress, 1);
-        wdt_reset(); //сбрасываем вочдог
+        wdt_reset(); // reset watchdog
         EEPROM.update(MessageNotifyEepromAddress, 1);
-        wdt_reset(); //сбрасываем вочдог
+        wdt_reset(); // reset watchdog
         char SMSMessage[16] = "ONLINE";
         EEPROM.put(MessageEepromAddress, SMSMessage);
-        wdt_reset(); //сбрасываем вочдог
+        wdt_reset(); // reset watchdog
         PrintMessage("Switching ON...");
         delay(2000);
         SoftReset();
       } else if (inputString.endsWith("off") or inputString.endsWith("Off") or inputString.endsWith("OFF")) {
+        // Switch OFF
         EEPROM.update(OperationEepromAddress, 0);
-        wdt_reset(); //сбрасываем вочдог
+        wdt_reset(); // reset watchdog
         EEPROM.update(MessageNotifyEepromAddress, 1);
-        wdt_reset(); //сбрасываем вочдог
+        wdt_reset(); // reset watchdog
         char SMSMessage[16] = "OFFLINE";
         EEPROM.put(MessageEepromAddress, SMSMessage);
-        wdt_reset(); //сбрасываем вочдог
+        wdt_reset(); // reset watchdog
         PrintMessage("Switching OFF...");
         delay(2000);
         SoftReset();
@@ -279,12 +275,12 @@ void GetTempPhone() {
         char CharTempPhone[16];
         TempPhone.toCharArray(CharTempPhone, 16);
         EEPROM.put(SMSEepromAddress, CharTempPhone);
-        wdt_reset(); //сбрасываем вочдог
+        wdt_reset(); // reset watchdog
         EEPROM.update(MessageNotifyEepromAddress, 1);
-        wdt_reset(); //сбрасываем вочдог
+        wdt_reset(); // reset watchdog
         char SMSMessage[16] = "Welcome!";
         EEPROM.put(MessageEepromAddress, SMSMessage);
-        wdt_reset(); //сбрасываем вочдог
+        wdt_reset(); // reset watchdog
         Serial.println(TempPhone + " is now the owner!");
         delay(2000);
         SoftReset();
@@ -292,7 +288,8 @@ void GetTempPhone() {
     }
   }
 }
-//Секция - все для СМС - конец
+
+// Section - all for SMS - end
 
 
 void Reset() {
